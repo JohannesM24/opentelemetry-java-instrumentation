@@ -610,3 +610,5 @@ include(":instrumentation:zio:zio-2.0:javaagent")
 // benchmark
 include(":benchmark-overhead-jmh")
 include(":benchmark-jfr-analyzer")
+include("instrumentation:eclipse-milo-0.6")
+findProject(":instrumentation:eclipse-milo-0.6")?.name = "eclipse-milo-0.6"
