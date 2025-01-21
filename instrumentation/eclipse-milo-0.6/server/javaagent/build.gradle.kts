@@ -1,6 +1,27 @@
 plugins {
   id("otel.javaagent-instrumentation")
 }
+muzzle {
+  // Only allow version 0.6.5 of the sdk-client module to pass the muzzle check
+  pass {
+    group.set("org.eclipse.milo")
+    module.set("sdk-client")
+    versions.set("[0.6.5,0.6.5]") // Only allow version 0.6.5
+  }
+
+  // Fail all other versions
+  fail {
+    group.set("org.eclipse.milo")
+    module.set("sdk-client")
+    versions.set("[,0.6.5)") // Fail all versions before 0.6.5
+    versions.set("[0.6.6,)") // Fail all versions after 0.6.5
+  }
+
+  // Assert that only version 0.6.5 is supported and others should fail
+  pass {
+    assertInverse.set(true) // Ensures that versions outside the defined range will fail
+  }
+}
 
 dependencies {
 

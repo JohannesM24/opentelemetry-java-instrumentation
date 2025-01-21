@@ -7,7 +7,7 @@ dependencies {
   implementation("org.eclipse.milo:sdk-client:0.6.5") // Replace with the Milo version you're using
 
   // Dependencies for Java agent testing
-  testImplementation(project(":javaagent-testing"))
+  api(project(":testing-common"))
   testImplementation("org.junit.jupiter:junit-jupiter:5.9.2") // JUnit 5 for writing tests
 
   // Additional dependencies for testing (optional)

@@ -1,18 +1,18 @@
 plugins {
-  id("otel.javaagent-instrumentation")
+  id("otel.java-conventions")
 }
 
 dependencies {
+  // Dependency for Eclipse Milo
+  implementation("org.eclipse.milo:sdk-server:0.6.5") // Replace with the Milo version you're using
 
-  // Required for creating extensions for the Java agent
-  implementation(project(":javaagent-extension-api"))
+  // Dependencies for Java agent testing
+  api(project(":testing-common"))
+  testImplementation("org.junit.jupiter:junit-jupiter:5.9.2") // JUnit 5 for writing tests
 
-  // Compile-time dependency for Eclipse Milo
-  compileOnly("org.eclipse.milo:sdk-server:0.6.5") // Replace with the Milo version you're using
-
-  // Dependencies for testing
-  testImplementation(project(":testing-common"))
-  testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
+  // Additional dependencies for testing (optional)
+  testImplementation("org.assertj:assertj-core:3.24.2") // Assertions
+  testImplementation("org.mockito:mockito-core:5.5.0") // Mocking
 }
 
 java {
